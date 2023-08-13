@@ -2,7 +2,9 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Book {
@@ -24,7 +26,8 @@ public class Book {
     @Column(length = 2000)
     private String summary;
 
-   // private List<Review> reviews;
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Review> reviews = new ArrayList<>();
 
    // private List<Genre> genres;
 
